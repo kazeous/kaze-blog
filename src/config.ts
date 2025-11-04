@@ -35,7 +35,7 @@ export const GiscusConfig: Record<string, string> = {
 	'data-reactions-enabled': '1',
 	'data-emit-metadata': '0',
 	'data-input-position': 'top',
-	'data-lang': 'zh-CN',
+	'data-lang': 'en-US',
 	'data-loading': 'lazy',
 	crossorigin: 'anonymous',
 	async: '',
