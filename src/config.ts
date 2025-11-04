@@ -2,7 +2,7 @@ import type { PostHideElements } from '~/content/config';
 
 export const Site = 'https://kaze-blog-five.vercel.app';
 export const SiteLanguage = 'en';
-export const SiteTitle = 'Kaze's den';
+export const SiteTitle = "Kaze's den";
 export const SiteDescription = 'quiet life, or a blaze of glory';
 export const FooterDescription = 'can 20s be something memorable';
 export const AdminName = 'Kaze';
