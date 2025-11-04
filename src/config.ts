@@ -1,10 +1,10 @@
 import type { PostHideElements } from '~/content/config';
 
-export const Site = 'https://astro-blog-zozo.pages.dev';
+export const Site = 'https://kaze-blog-five.vercel.app';
 export const SiteLanguage = 'en';
-export const SiteTitle = 'Kazeous blog';
+export const SiteTitle = 'Kaze's den';
 export const SiteDescription = 'quiet life, or a blaze of glory';
-export const FooterDescription = 'OUS production';
+export const FooterDescription = 'can 20s be something memorable';
 export const AdminName = 'Kaze';
 export const PageSize = 15;
 
