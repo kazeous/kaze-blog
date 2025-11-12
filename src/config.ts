@@ -14,7 +14,6 @@ export const Socials: Record<string, Record<string, string>> = {
 	mail: { url: 'mailto:vu.nguyenanh@reyuugames.com' },
 	github: { url: 'https://github.com/kazeous' },
 	x: { url: 'https://x.com/kazetheshou' },
-	mastodon: { url: 'https://mastodon.social/@userName' },
 	facebook: { url: 'https://facebook.com/kazeous' },
 	instagram: { url: 'https://instagram.com/kaze.ous' },
 	telegram: { url: 'https://t.me/@kazeous' },
