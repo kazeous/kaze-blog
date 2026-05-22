@@ -16,39 +16,49 @@ interface Props {
 	{...Astro.props}
 	rootClass="scrollbar-none"
 	bodyClass={[
-		'text-neutral-600',
+		'text-[#102a5f]',
 		'flex',
 		'flex-col',
 		'justify-between',
 		'min-h-dvh',
-		'py-[2dvh]',
-		'lg:pt-[6dvh]',
-		'lg:pb-[3dvh]',
-		'bg-[#f7f7f7]',
+		'p-4',
+		'sm:p-8',
+		'lg:p-[4dvw]',
+		'bg-[#dff1ff]',
+		'bg-[radial-gradient(circle_at_18%_12%,rgba(255,255,255,0.92)_0,rgba(255,255,255,0)_32%),linear-gradient(135deg,#d8efff_0%,#f3fbff_46%,#d7efff_100%)]',
 		'bg-local',
-		'dark:bg-[#202124]',
-		'dark:text-neutral-50',
+		'dark:bg-none',
+		'dark:bg-[#121417]',
+		'dark:text-[#e4e8ed]',
+		'font-default-sans',
 	]}
 >
 	<div
 		class:list={[
 			'mx-auto',
 			'flex',
-			'w-[90dvw]',
-			'max-w-[1400px]',
+			'w-full',
+			'max-w-[1180px]',
 			'grow',
 			'flex-col',
-			'bg-neutral-50',
+			'overflow-hidden',
+			'rounded-[28px]',
+			'border',
+			'border-[#a0cef8]/55',
+			'bg-[#f8fcff]/70',
 			'bg-local',
-			'p-[3dvw]',
-			'shadow-[0_0.5em_1em_0_rgba(236,236,236,0.86)]',
-			'lg:p-[2dvw]',
-			'dark:bg-[#212223]',
-			'dark:shadow-[0_0_0.5em_0.25em_rgba(136,136,136,0.35)]',
+			'p-5',
+			'shadow-[0_24px_80px_rgba(10,30,80,0.10)]',
+			'sm:p-8',
+			'lg:min-h-[calc(100dvh-8dvw)]',
+			'lg:p-10',
+			'dark:border-white/10',
+			'dark:bg-[#1b1e26]',
+			'dark:shadow-[0_28px_90px_rgba(0,0,0,0.38)]',
 		]}
 	>
 		<Header currentNav={Astro.props.currentNav} />
-		<main class="px-[2dvw] pt-[2dvh] lg:pt-[6dvh]">
+		<main class="grow px-1 pt-10 sm:px-3 lg:px-10 lg:pt-16">
 			<slot />
 		</main>
 	</div>

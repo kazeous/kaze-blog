@@ -11,19 +11,48 @@ import MarkdownLayout from '~/layouts/MarkdownLayout.astro';
 	hide={['title', 'comments']}
 	currentNav="Home"
 >
-	<div class="flex flex-col items-center gap-4 xl:flex-row">
-		<Picture class="lg:max-w-md" src={img} formats={['avif', 'webp']} alt="a dog" loading="eager" />
-		<div>
-			<h1>Helu! Welcome to the doggo den. I'm Kaze, some wandering yellow shibe-dragon👋</h1>
-			<p>
-				The name is Kaze Hishou. But go by Kaz or Shou is your choices.
+	<div class="grid min-h-[54dvh] items-center gap-10 lg:grid-cols-[0.82fr_1fr] lg:gap-16">
+		<div class="order-2 flex justify-center lg:order-1">
+			<Picture
+				class="max-h-[28rem] w-full max-w-[22rem] object-contain opacity-95 drop-shadow-[0_24px_40px_rgba(0,0,0,0.18)] dark:drop-shadow-[0_30px_48px_rgba(0,0,0,0.45)]"
+				src={img}
+				formats={['avif', 'webp']}
+				alt="a dog"
+				loading="eager"
+			/>
+		</div>
+		<div class="order-1 max-w-2xl lg:order-2">
+			<p class="mb-4 text-sm font-semibold uppercase tracking-[0.22em] text-sky-600 dark:text-sky-300">
+				Welcome in
 			</p>
-            <p>
-                this site exist for me to write something I don't want to put on facebook or twitter, mostly yapping, dont worry about it
-            </p>
-            <p>
-                thank anyway, for stopping by, reading something here. have a gud day too :3.
-            </p>
+			<h1 class="text-4xl font-black leading-tight text-[#102a5f] sm:text-5xl lg:text-6xl dark:text-[#f2f5f8]">
+				Rest your feet. Want something to read?
+			</h1>
+			<div class="mt-6 space-y-4 text-base leading-8 text-[#204777] sm:text-lg dark:text-neutral-300">
+				<p>The name is Kaze Hishou. Kaz or Shou works too.</p>
+				<p>
+					This place is where I write the thoughts I do not want to drop on noisy feeds:
+					life notes, small obsessions, and the occasional long yap.
+				</p>
+				<p>
+					Thanks for stopping by. Take your time, read what catches your eye, and have a
+					good day.
+				</p>
+			</div>
+			<div class="mt-8 flex flex-wrap gap-3">
+				<a
+					class="inline-flex min-h-11 items-center rounded-full bg-sky-400 px-5 text-sm font-bold text-neutral-950 no-underline shadow-[0_10px_30px_rgba(56,189,248,0.25)] hover:bg-sky-300 visited:text-neutral-950"
+					href="/blog"
+				>
+					Read the blog
+				</a>
+				<a
+					class="inline-flex min-h-11 items-center rounded-full border border-[#a0cef8]/55 bg-white/65 px-5 text-sm font-bold text-[#2c62b4] no-underline shadow-[0_8px_20px_rgba(10,30,80,0.06)] hover:bg-white hover:text-[#102a5f] visited:text-[#2c62b4] dark:border-white/10 dark:bg-white/5 dark:text-neutral-200 dark:hover:bg-white/10 dark:hover:text-white dark:visited:text-neutral-200"
+					href="/about"
+				>
+					About Kaze
+				</a>
+			</div>
 		</div>
 	</div>
 </MarkdownLayout>

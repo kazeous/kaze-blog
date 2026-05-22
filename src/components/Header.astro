@@ -1,5 +1,4 @@
 ---
-import fs from 'node:fs/promises';
 import { Icon } from 'astro-icon/components';
 import { Hide, SiteDescription, SiteTitle, Socials } from '~/config';
 import Nav from './Nav.astro';
@@ -9,8 +8,6 @@ interface Props {
 	currentNav?: string;
 }
 const { currentNav } = Astro.props;
-
-const customLogo = (await fs.stat('./src/assets/logo.svg')).isFile();
 
 const socialConfig: Record<string, Record<string, string>> = {
 	bilibili: { icon: 'ri:bilibili-fill' },
@@ -73,19 +70,20 @@ for (const platform in Socials) {
 }
 ---
 
-<header class="grid grid-cols-2 items-start justify-between lg:flex">
+<header class="grid grid-cols-[1fr_auto] items-start gap-5 lg:grid-cols-[minmax(14rem,1fr)_auto]">
 	{
 		!Hide.includes('logo') ? (
 			<a
 				transition:persist
 				href="/"
 				aria-label="go to index"
-				class={customLogo ? '' : 'w-[4.5rem] text-4xl'}
+				class="site-brand inline-flex flex-col leading-none text-[#102a5f] dark:text-[#f2f5f8]"
 			>
-				{customLogo ? (
-					<Icon name="logo" class="size-16 fill-current" title="go to index" />
-				) : (
-					SiteTitle
+				<span class="text-3xl font-black tracking-normal sm:text-4xl lg:text-5xl">{SiteTitle}</span>
+				{!Hide.includes('siteDescription') && (
+					<span class="mt-2 max-w-72 text-sm font-medium leading-5 text-[#2c62b4] dark:text-neutral-400">
+						{SiteDescription}
+					</span>
 				)}
 			</a>
 		) : (
@@ -95,41 +93,76 @@ for (const platform in Socials) {
 	<button
 		transition:persist
 		id="menu-btn"
-		class="justify-self-end lg:hidden"
+		class="justify-self-end rounded-full border border-[#a0cef8]/55 bg-white/75 p-2 text-[#2c62b4] shadow-[0_8px_20px_rgba(10,30,80,0.08)] hover:bg-white lg:hidden dark:border-white/10 dark:bg-white/5 dark:text-neutral-100 dark:hover:bg-white/10"
 		title="open menu"
 		aria-label="open menu"
 		aria-expanded="false"
-		aria-controls="menu-items"
+		aria-controls="menu"
 	>
 		<Icon name="ri:menu-fill" class="size-8" />
 	</button>
-	<div id="menu" class="col-span-2 hidden flex-col gap-3 text-center lg:flex lg:items-end">
-		<div class="mb-[2dvh] flex flex-col items-center gap-3 lg:mb-7 lg:flex-row lg:gap-8">
+	<div
+		id="menu"
+		class="col-span-2 hidden flex flex-col items-center gap-5 pt-3 text-center lg:col-span-1 lg:flex lg:items-end lg:pt-0"
+	>
+		<div class="flex flex-col items-center gap-3 lg:flex-row lg:gap-3">
 			<Nav currentNav={currentNav} />
 			{
 				!Hide.includes('search') && (
-					<a href="/search" title="Navigate to search page" aria-label="Navigate to search page">
-						<Icon name="ri:search-2-line" class="opacity-75 hover:opacity-100" />
+					<a
+						class="inline-flex size-10 items-center justify-center rounded-full border border-[#a0cef8]/55 bg-white/75 text-[#2c62b4] shadow-[0_8px_20px_rgba(10,30,80,0.08)] hover:bg-white dark:border-white/10 dark:bg-white/5 dark:text-neutral-100 dark:hover:bg-white/10"
+						href="/search"
+						title="Navigate to search page"
+						aria-label="Navigate to search page"
+					>
+						<Icon name="ri:search-2-line" class="size-5" />
 					</a>
 				)
 			}
 			{!Hide.includes('themeToggler') && <ThemeToggler />}
 		</div>
 		<Fragment transition:persist>
-			{!Hide.includes('siteDescription') && <div>{SiteDescription}</div>}
 			{
 				socials.length > 0 && (
-					<div class="mt-[2dvh] flex flex-wrap justify-center gap-3 lg:mt-0">
+					<div class="flex max-w-sm flex-wrap justify-center gap-2 lg:justify-end">
 						{socials.map(({ platform, icon, url, label }) => (
-							<a href={url} aria-label={label ?? platform}>
+							<a
+								class="inline-flex size-9 items-center justify-center rounded-full border border-[#a0cef8]/55 bg-white/55 text-[#2c62b4] shadow-[0_6px_16px_rgba(10,30,80,0.06)] hover:bg-white hover:text-[#102a5f] dark:border-white/10 dark:bg-white/5 dark:text-neutral-300 dark:hover:bg-white/10 dark:hover:text-white"
+								href={url}
+								aria-label={label ?? platform}
+							>
 								<Icon
 									name={icon}
-									class="fill-current opacity-75 hover:opacity-100"
+									class="size-4 fill-current"
 									title={label ?? platform}
 								/>
 							</a>
 						))}
 					</div>
+				)
+			}
+			{
+				currentNav === 'Blog' && (
+					<nav aria-label="Blog sections">
+						<ul class="flex flex-wrap justify-center gap-2 lg:justify-end">
+							<li>
+								<a
+									class="inline-flex min-h-9 items-center rounded-full border border-[#a0cef8]/55 bg-white/55 px-4 text-sm font-semibold text-[#2c62b4] shadow-[0_6px_16px_rgba(10,30,80,0.06)] hover:bg-white hover:text-[#102a5f] dark:border-white/10 dark:bg-white/5 dark:text-neutral-300 dark:hover:bg-white/10 dark:hover:text-white"
+									href="/tags"
+								>
+									Tags
+								</a>
+							</li>
+							<li>
+								<a
+									class="inline-flex min-h-9 items-center rounded-full border border-[#a0cef8]/55 bg-white/55 px-4 text-sm font-semibold text-[#2c62b4] shadow-[0_6px_16px_rgba(10,30,80,0.06)] hover:bg-white hover:text-[#102a5f] dark:border-white/10 dark:bg-white/5 dark:text-neutral-300 dark:hover:bg-white/10 dark:hover:text-white"
+									href="/archives"
+								>
+									Archives
+								</a>
+							</li>
+						</ul>
+					</nav>
 				)
 			}
 		</Fragment>

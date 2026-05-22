@@ -7,26 +7,25 @@ const { currentNav } = Astro.props;
 const navs = [
 	{ name: 'Home', href: '/' },
 	{ name: 'Blog', href: '/blog' },
-	{ name: 'Tags', href: '/tags' },
-	{ name: 'Archives', href: '/archives' },
 	{ name: 'About', href: '/about' },
 ];
 ---
 
 <nav>
-	<ul class="flex flex-col gap-3 font-default-sans lg:flex-row">
+	<ul
+		class="flex flex-col gap-2 rounded-3xl border border-[#a0cef8]/55 bg-white/55 p-1 font-default-sans shadow-[0_6px_16px_rgba(10,30,80,0.06)] backdrop-blur lg:flex-row dark:border-white/10 dark:bg-white/5"
+	>
 		{
 			navs.map((nav) => (
 				<li>
-					<button
-						type="button"
-						class="text-neutral-700 opacity-75 aria-pressed:opacity-100 hover:opacity-100 dark:text-neutral-50"
-						aria-pressed={currentNav === nav.name ? 'true' : 'false'}
+					<a
+						class="inline-flex min-h-9 items-center rounded-full px-4 text-sm font-semibold text-[#2c62b4] hover:bg-white hover:text-[#102a5f] aria-[current=page]:bg-sky-300 aria-[current=page]:text-[#102a5f] dark:text-neutral-300 dark:hover:bg-white/10 dark:hover:text-white dark:aria-[current=page]:bg-sky-400 dark:aria-[current=page]:text-neutral-950"
+						href={nav.href}
+						aria-current={currentNav === nav.name ? 'page' : undefined}
 						aria-label={`Navigate to ${nav.name}`}
-						data-nav={nav.name}
 					>
-						<a href={nav.href}>{nav.name}</a>
-					</button>
+						{nav.name}
+					</a>
 				</li>
 			))
 		}

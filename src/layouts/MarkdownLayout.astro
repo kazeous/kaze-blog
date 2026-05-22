@@ -24,11 +24,15 @@ const showTimes = showDate || showLastmod || showReadingTime;
 ---
 
 <ScaffoldLayout {...Astro.props}>
-	{title && show('title') && <h1 class="text-5xl font-extrabold">{title}</h1>}
-	<div class="my-[1dvh] text-neutral-600 lg:my-[3dvh] dark:text-neutral-300">
+	{title && show('title') && (
+		<h1 class="text-4xl font-black leading-tight text-[#102a5f] sm:text-5xl dark:text-[#f2f5f8]">
+			{title}
+		</h1>
+	)}
+	<div class="my-4 text-[#4f79ad] lg:my-8 dark:text-neutral-300">
 		{
 			showTimes && (
-				<div class="flex flex-col opacity-70 *:flex *:items-center lg:flex-row lg:gap-4">
+				<div class="flex flex-col gap-2 text-sm font-medium opacity-75 *:flex *:items-center *:gap-1 lg:flex-row lg:gap-4">
 					{showDate && (
 						<time datetime={date.toISOString()}>
 							<Icon name="ri:time-line" class="fill-current" title="date" aria-label="date" />
@@ -65,7 +69,7 @@ const showTimes = showDate || showLastmod || showReadingTime;
 				<div>
 					{tags.map((tag: string) => (
 						<a
-							class="mr-2 text-xl opacity-80 hover:opacity-100"
+							class="mr-2 text-base font-semibold opacity-80 hover:opacity-100"
 							href={`/tags/${tag}/1`}
 							aria-label={`More posts of tag ${tag}`}
 						>
@@ -80,7 +84,12 @@ const showTimes = showDate || showLastmod || showReadingTime;
 		class:list={[
 			'prose',
 			'max-w-full',
+			'prose-neutral',
 			'dark:prose-invert',
+			'prose-headings:text-[#102a5f]',
+			'dark:prose-headings:text-[#f2f5f8]',
+			'prose-a:text-sky-600',
+			'dark:prose-a:text-sky-300',
 			'prose-p:hyphens-auto',
 			'prose-p:text-justify',
 			'prose-pre:rounded-lg',

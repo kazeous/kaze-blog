@@ -11,13 +11,10 @@ export const PageSize = 15;
 // socialPlatform => userName
 // check components/Header.astro socialConfig for more info
 export const Socials: Record<string, Record<string, string>> = {
-	mail: { url: 'mailto:vu.nguyenanh@reyuugames.com' },
-	github: { url: 'https://github.com/kazeous' },
-	x: { url: 'https://x.com/kazetheshou' },
-	facebook: { url: 'https://facebook.com/kazeous' },
-	instagram: { url: 'https://instagram.com/kaze.ous' },
+	mail: { url: 'mailto:hishou@kazeous.com' },
+	x: { url: 'https://x.com/kaze_ous' },
+	instagram: { url: 'https://instagram.com/kaze_ous' },
 	telegram: { url: 'https://t.me/@kazeous' },
-	youtube: { url: 'https://youtube.com/@kazeous' },
 	twitch: { url: 'https://twitch.com/kazeous' },
 	rss: { url: '/rss.xml' },
 };
